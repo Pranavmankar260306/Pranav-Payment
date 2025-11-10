@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Pranav</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    
+    html {
+      height: 100%;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .card {
+      backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%), 
+                  url('https://i.pinimg.com/736x/31/ab/d9/31abd98afcfa5c8d61f0b272d4f6677b.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    .payment-btn {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .payment-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .coin-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+ </head>
+ <body class="gradient-bg">
+  <main class="min-h-full flex items-center justify-center p-6">
+   <div class="card rounded-3xl p-8 md:p-12 max-w-2xl w-full">
+    <!-- Header -->
+    <div class="text-center mb-8">
+     <div class="coin-icon text-6xl mb-4">💰</div>
+     <div style="background: rgba(255, 255, 255, 0.85); padding: 24px 32px; border-radius: 16px; margin-bottom: 12px; max-width: 90%; margin-left: auto; margin-right: auto;">
+      <h1 id="main-title" class="text-4xl md:text-5xl font-bold" style="color: #667eea;">Pranav Mankar</h1>
+     </div>
+     <div style="background: rgba(255, 255, 255, 0.85); padding: 14px 24px; border-radius: 12px; max-width: 70%; margin-left: auto; margin-right: auto;">
+      <p id="subtitle" class="text-xl" style="color: #764ba2;">Mindset is everything ✨</p>
+     </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-8">
+     <div style="background: rgba(255, 255, 255, 0.85); padding: 20px 28px; border-radius: 14px; max-width: 60%; margin-left: auto; margin-right: auto;">
+      <p id="description" class="text-lg text-center leading-relaxed" style="color: #4a5568;">Give your contribution here</p>
+     </div>
+    </div>
+
+    <!-- Payment Options -->
+    <div class="mb-8">
+      <button id="sendMoneyBtn" class="payment-btn block w-full text-center py-4 px-6 rounded-xl font-semibold text-lg text-white" style="background-color: #0c2f54; cursor: pointer; border: none;">
+        💸 Send Money
+      </button>
+    </div>
+
+    <!-- Thank You Message -->
+    <div class="text-center pt-6">
+     <div style="background: rgba(255, 255, 255, 0.85); padding: 12px 20px; border-radius: 10px; max-width: 50%; margin-left: auto; margin-right: auto;">
+      <p id="thank-you-message" class="text-base font-medium" style="color: #667eea;">Thank you so much for your support! 🙏</p>
+     </div>
+    </div>
+   </div>
+  </main>
+
+  <script>
+    const defaultConfig = {
+      background_color: '#667eea',
+      card_color: '#ffffff',
+      text_color: '#4a5568',
+      primary_button_color: '#0070ba',
+      accent_color: '#764ba2',
+      font_family: 'system-ui, -apple-system, sans-serif',
+      font_size: 16,
+      main_title: 'Pranav Mankar',
+      subtitle: 'Mindset is everything ✨',
+      description: 'Give your contribution here',
+      thank_you_message: 'Thank you so much for your support! 🙏'
+    };
+
+    function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'system-ui, -apple-system, sans-serif';
+      const fontFamily = `${customFont}, ${baseFontStack}`;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      // Update colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      document.body.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${accentColor} 100%)`;
+      
+      const card = document.querySelector('.card');
+      card.style.background = `linear-gradient(135deg, ${bgColor}4d 0%, ${accentColor}4d 100%), url('https://i.pinimg.com/736x/31/ab/d9/31abd98afcfa5c8d61f0b272d4f6677b.jpg')`;
+      card.style.backgroundSize = 'cover';
+      card.style.backgroundPosition = 'center';
+      
+      // Update text content and styling
+      const mainTitle = document.getElementById('main-title');
+      mainTitle.textContent = config.main_title || defaultConfig.main_title;
+      mainTitle.style.color = config.background_color || defaultConfig.background_color;
+      mainTitle.style.fontFamily = fontFamily;
+      mainTitle.style.fontSize = `${baseSize * 2.5}px`;
+      
+      const subtitle = document.getElementById('subtitle');
+      subtitle.textContent = config.subtitle || defaultConfig.subtitle;
+      subtitle.style.color = config.accent_color || defaultConfig.accent_color;
+      subtitle.style.fontFamily = fontFamily;
+      subtitle.style.fontSize = `${baseSize * 1.25}px`;
+      
+      const description = document.getElementById('description');
+      description.textContent = config.description || defaultConfig.description;
+      description.style.color = config.text_color || defaultConfig.text_color;
+      description.style.fontFamily = fontFamily;
+      description.style.fontSize = `${baseSize * 1.125}px`;
+      
+      const thankYouMessage = document.getElementById('thank-you-message');
+      thankYouMessage.textContent = config.thank_you_message || defaultConfig.thank_you_message;
+      thankYouMessage.style.color = config.background_color || defaultConfig.background_color;
+      thankYouMessage.style.fontFamily = fontFamily;
+      thankYouMessage.style.fontSize = `${baseSize}px`;
+      
+      // Update button colors
+      const buttons = document.querySelectorAll('.payment-btn');
+      buttons.forEach((btn) => {
+        btn.style.fontFamily = fontFamily;
+        btn.style.fontSize = `${baseSize * 1.125}px`;
+      });
+    }
+
+    // Add click event to button
+    document.getElementById('sendMoneyBtn').addEventListener('click', function() {
+      window.open('https://www.pexels.com/search/4k%20wallpaper%20god%20ganesh/', '_blank');
+    });
+
+    // Run default config
+    onConfigChange(defaultConfig);
+  </script>
+ </body>
+</html>
